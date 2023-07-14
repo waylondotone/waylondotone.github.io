@@ -28,7 +28,7 @@
 <meta property="og:description" content="拷贝还是复制 123for (auto occupant_in_yield_zone_state : occupant_in_yield_zone_states_) {}for (auto&amp; occupant_in_yield_zone_state : occupant_in_yield_zone_states_) {} 运算符的区别 12345678&#x2F;&#x2F; 加号优先级高，三元运算符 从右向">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-10-28T00:38:47.000Z">
-<meta property="article:modified_time" content="2023-05-19T12:12:32.181Z">
+<meta property="article:modified_time" content="2023-07-14T02:53:27.431Z">
 <meta property="article:author" content="Nobody">
 <meta property="article:tag" content="C Plus Plus">
 <meta property="article:tag" content="Programming">
@@ -250,7 +250,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-19 20:12:32" itemprop="dateModified" datetime="2023-05-19T20:12:32+08:00">2023-05-19</time>
+      <time title="Modified: 2023-07-14 10:53:27" itemprop="dateModified" datetime="2023-07-14T10:53:27+08:00">2023-07-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -298,14 +298,11 @@
 <h1 id="运算符的区别">运算符的区别</h1>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 加号优先级高，三元运算符 从右向左 解析</span><br><span class="line">single_sum = (l1!=nullptr?l1-&gt;val:0) + (l2!=nullptr?l2-&gt;val:0) + next_tmp;</span><br><span class="line"></span><br><span class="line">single_sum = l1!=nullptr?l1-&gt;val:0 + l2!=nullptr?l2-&gt;val:0 + next_tmp;</span><br><span class="line"></span><br><span class="line">等同于</span><br><span class="line"></span><br><span class="line">single_sum = l1!=nullptr?l1-&gt;val:[(0 + l2)!=nullptr?l2-&gt;val:(0 + next_tmp)];</span><br></pre></td></tr></tbody></table></figure>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/language/operator_precedence">c++
-运算符优先级</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/misayaaaaa/article/details/62417326">C++
-右结合律与左结合律详解</a></li>
+<li><a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/language/operator_precedence">c++ 运算符优先级</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/misayaaaaa/article/details/62417326">C++ 右结合律与左结合律详解</a></li>
 </ul>
 <blockquote>
-<p>表达式 a &gt; b ? b &gt; c ? 1 : 0 : 2 将被解析为 a &gt; b ? (b&gt; c
-? 1 : 0) : 2。</p>
+<p>表达式 a &gt; b ? b &gt; c ? 1 : 0 : 2 将被解析为 a &gt; b ? (b&gt; c ? 1 : 0) : 2。</p>
 </blockquote>
 <h1 id="boostgeometrycovered_by">boost::geometry::covered_by</h1>
 <h2 id="int64_t-vs-int">int64_t vs int</h2>
