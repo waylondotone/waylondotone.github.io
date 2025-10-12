@@ -150,7 +150,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">102</span>
+          <span class="site-state-item-count">103</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -183,6 +183,318 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.waylon.one/Linux/Install-nextcloud-in-docker/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nobody">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="One's Way">
+      <meta itemprop="description" content="sharing daily progress and life">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | One's Way">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Linux/Install-nextcloud-in-docker/" class="post-title-link" itemprop="url">使用 Docker 在 Linux 上安装 NextCloud 私有云盘</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-09-21 16:47:58" itemprop="dateCreated datePublished" datetime="2019-09-21T16:47:58+08:00">2019-09-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-05-19 20:12:32" itemprop="dateModified" datetime="2023-05-19T20:12:32+08:00">2023-05-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>2.4k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>9 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <!--
+[Nextcloud 搭建私人云服务教程](https://blog.itswincer.com/posts/bf0413ac/)
+[使用Docker快速安装NextCloud个人私有云盘](https://www.moerats.com/archives/420/)
+[docker容器开机自启](https://www.cnblogs.com/gcgc/p/10494615.html)
+-->
+<p>ps. 本文实时更新于 <a href="http://www.waylon.one/Linux/Install-nextcloud-in-docker/">个人网站</a>，请移步阅读。</p>
+<p>国内的网盘虽然免费，但总让人对隐私不太放心，毕竟 “免费的永远是最贵的”。</p>
+<p>自己之前购买了一个 VPS，搭建自己的网站后，感觉没有充分利用 VPS
+的流量和性能，于是琢磨搭建一个私人的云服务，随后就发现了 Nextcloud
+这一开源云服务。</p>
+<p><img data-src="http://www.waylon.one/downloads/images/Baidu_to_private.JPG"></p>
+<blockquote>
+<p>通过 <a target="_blank" rel="noopener" href="https://bandwagonhost.com/aff.php?aff=60653">链接</a>
+注册并购买搬瓦工 VPS，就可以按下面的教程安装 NextCloud
+私人云盘啦，我也可以得到新客注册的返现。</p>
+</blockquote>
+<h1 id="about-nextcloud">About NextCloud</h1>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://nextcloud.com/">Nextcloud</a> is the <strong>open
+source file sync and share software</strong> for everyone from
+individuals to large enterprises and service providers. Nextcloud
+provides a safe, secure and compliant file sync and share solution on
+servers you control.<br>
+With Nextcloud you can share one or more folders on your PC, and sync
+them with your Nextcloud server. <strong>Place files in your local
+shared directories, and those files are immediately synced to the
+server, and then to other PCs via the desktop client.</strong> Not near
+a desktop client? No problem, simply log in with the web client and
+manage your files there. <strong>The Android and iOS mobile apps allow
+you to browse, download and upload photos and videos.</strong><br>
+Whether using a mobile device, a workstation, or a web client, Nextcloud
+provides the ability to put the right files in the right hands at the
+right time on any device in one simple-to-use, secure, private and
+controlled solution.</p>
+</blockquote>
+<p><img data-src="http://www.waylon.one/downloads/images/Nextcloud.png"></p>
+<p>简而言之，Nextcloud
+是一个自由及开放源代码的私有云网盘，每个人都可以在私人服务器上安装并运行它，能够快速同步你的文件到你的私有服务器，方便你跨平台 (现在支持 PC、Android 和 iOS)
+同步和分享文件，功能和百度云不差多少，优点是隐私好，同步下载速度取决于服务器带宽。</p>
+<p>与 Dropbox 等专有服务相比，Nextcloud
+的开放架构让用户可以利用应用程序的方式在服务器上新增额外的功能，并让用户可以完全掌控自己的数据。同时，Nextcloud
+可与在 Windows、macOS 或是多种 Linux 发布版上运行的客户端同步。</p>
+<p>Nextcloud
+用户可以管理日历、联系人、计划工作与流媒体。此外，用户也可以在 Nextcloud
+上使用基于浏览器的文本编辑器、书签服务、缩略网址服务、相册、RSS 阅读器与文件查看器。因为有良好的扩展性，Nextcloud 可以透过鼠标点一下即可完成安装的应用程序强化其功能，并可连线至
+Dropbox、Google 云端硬盘与 Amazon S3 等产品。</p>
+<h1 id="安装简介">安装简介</h1>
+<p>Nextcloud 虽然这么好用，但是安装依赖却非常复杂，需要安装 LNMP
+集成环境 (i.e. Linux + Nginx + MySql +
+PHP)，在搭建过程中或多或少都会出点问题。</p>
+<p>本文推荐一个很方便的安装方法 <a target="_blank" rel="noopener" href="https://github.com/chrootLogin/docker-nextcloud">docker-nextcloud</a>，使用纯命令形式在
+Docker 上安装 NextCloud (Docker file
+会帮你把负责的依赖都配置好)，并探讨如何配置反向代理，适合尝鲜的新手。</p>
+<p>安装 Docker 后，需要安装两个容器：mysql 和 nextcloud。其中，mysql
+用于存储用户的数据，nextcloud 通过向 mysql
+容器读写数据，从而实现数据的存储和访问。</p>
+<h1 id="安装docker">安装 Docker</h1>
+<blockquote>
+<p>Docker
+是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的
+Linux 或 Windows
+机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。</p>
+</blockquote>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># CentOS 7、Debian、Ubuntu</span><br><span class="line">curl -sSL https://get.docker.com/ | sh</span><br><span class="line">systemctl start docker</span><br><span class="line">systemctl enable docker</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="复习知识点">复习知识点</h2>
+<ul>
+<li>curl 是一个工具，用于传输来自服务器或者到服务器的数据。</li>
+<li>systemctl 是一个系统管理守护进程、工具和库的集合，用于取代 system
+V、service 和 chkconfig 命令，初始进程主要负责控制 systemd
+系统和服务管理器。</li>
+<li>systemctl start 启动服务</li>
+<li> systemctl enable 激活服务并在开机时启用</li>
+</ul>
+<!--
+[Centos7中systemctl命令详解](https://www.cnblogs.com/zhming26/p/6155201.html)
+-->
+<h1 id="安装-nextcloud-服务器">安装 Nextcloud 服务器</h1>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 拉取 Mysql 镜像和 Nextcloud 镜像</span><br><span class="line">docker pull rootlogin/nextcloud &amp;&amp; docker pull mariadb:10</span><br><span class="line"></span><br><span class="line"># 创建 mysql 容器，注意修改数据库信息</span><br><span class="line">docker run --name nextcloud_db -d --restart=always -e MYSQL_ROOT_PASSWORD=test -e MYSQL_DATABASE=test -e MYSQL_USER=test -e MYSQL_PASSWORD=test -v /var/nextcloud/mysql:/var/lib/mysql mariadb:10</span><br><span class="line"></span><br><span class="line"># 创建 nextcloud 容器，添加链接到 mysql 容器；ip 是浏览器访问云盘的端口号。使用镜像 rootlogin/nextcloud，以后台模式启动一个容器, 容器命名为 nextcloud，将容器的 80 端口映射到主机的 3000 端口,主机的目录 /var/nextcloud/data 映射到容器的 /data，并添加链接到上述的 nextcloud_db 容器。</span><br><span class="line">docker run --name nextcloud_db -d --restart=always -e MYSQL_ROOT_PASSWORD=test -e MYSQL_DATABASE=test -e MYSQL_USER=test -e MYSQL_PASSWORD=test -v /var/nextcloud/mysql:/var/lib/mysql mariadb:10</span><br></pre></td></tr></tbody></table></figure>
+<!--
+密码 supersecretpassword
+-->
+<!--
+docker run --name nextcloud_db -d --restart=always -e MYSQL_ROOT_PASSWORD=test -e MYSQL_DATABASE=test -e MYSQL_USER=test -e MYSQL_PASSWORD=test -v /var/nextcloud/mysql:/var/lib/mysql mariadb:10
+-->
+<!--
+docker run -d --name nextcloud --restart=always --link nextcloud_db:nextcloud_db -v /var/nextcloud/data:/data -p 3000:80 rootlogin/nextcloud
+-->
+<blockquote>
+<p>MariaDB 和 MySQL 的关系：<strong>MariaDB 数据库管理系统是 MySQL
+的一个分支</strong>。开发这个分支的原因之一是：甲骨文公司收购了 MySQL
+后，有将 MySQL
+闭源的潜在风险，因此社区采用分支的方式来避开这个风险。<br>
+MariaDB 的目的是完全兼容 MySQL，包括 API 和命令行，使之能轻松成为 MySQL
+的代替品。</p>
+</blockquote>
+<p>&nbsp; <img data-src="http://www.waylon.one/downloads/images/next_cloud_container.png"></p>
+<p>恭喜你，现在初级版的云服务器已经搭建成功。访问地址为
+http://your_ip:3000。<br>
+启动命令里的 3000
+端口可自行替换，不过后面有关端口的命令都可自行修改，/var/nextcloud/data 为网盘的数据库，可以自行修改。</p>
+<h2 id="复习知识点-1">复习知识点</h2>
+<ul>
+<li>docker pull 是从镜像仓库拉取镜像。</li>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/docker/docker-run-command.html">docker
+run</a> 是创建一个新的容器并运行一个命令。</li>
+<li>--restart=always，设置开机重启</li>
+</ul>
+<h1 id="防火墙开启端口">防火墙开启端口</h1>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#CentOS 7</span><br><span class="line">firewall-cmd --zone=public --add-port=3000/tcp --permanent</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></tbody></table></figure>
+<h1 id="初始设置">初始设置</h1>
+<ul>
+<li>访问 http://your_ip:3000。</li>
+<li>创建管理员帐号和密码</li>
+<li>数据库选择 MySQL/MariaDB，如果配置不成功，可以选择 SQLite
+(性能差点，但是可以满足个人基本的需求)。</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>名称</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>用户名</td>
+<td> test</td>
+</tr>
+<tr class="even">
+<td> 密码</td>
+<td> test</td>
+</tr>
+<tr class="odd">
+<td> 数据库名</td>
+<td> test</td>
+</tr>
+<tr class="even">
+<td> 地址</td>
+<td> nextcloud_db:3306</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>mysql 数据库默认端口是 3306。</p>
+</blockquote>
+<p><img data-src="http://www.waylon.one/downloads/images/nextcloud_initialize.png"></p>
+<ul>
+<li>恭喜你，进入自己的网盘界面。</li>
+</ul>
+<p><img data-src="/downloads/images/nextcloud_web.png"></p>
+<h1 id="域名访问">域名访问</h1>
+<p>IP 访问会直接把云盘的 IP
+和端口暴露出来，感觉不太妥。如果要<!--像上面示例 [点击访问](http://drive.waylon.one/)，-->通过域名访问自己的网盘，就需要反代了。</p>
+<p>反代可以用 Nginx、Apache、Caddy，本文讲述如何使用 Nginx。</p>
+<blockquote>
+<p>Nginx 是一款轻量级的 Web
+服务器 / 反向代理服务器及电子邮件（IMAP/POP3）代理服务器，在 BSD-like
+协议下发行。其特点是占有内存少，并发能力强，</p>
+</blockquote>
+<p>默认用户已经完成购买域名、安装 Nginx
+的前序步骤，鼓励折腾一下，有问题欢迎下面留言交流。</p>
+<h2 id="certbot-生成-https-证书">certbot 生成 https 证书</h2>
+<p>Let's
+Encrypt 是很火的一个免费 SSL 证书发行项目，自动化发行证书，证书有 90 天的有效期。适合个人使用或者临时使用，不用再忍受自签发证书不受浏览器信赖的提示。<br>
+附上 CentOS 7.2 的 <a target="_blank" rel="noopener" href="https://www.vpser.net/build/letsencrypt-certbot.html">免费 SSL 证书 Let's
+Encrypt</a> 流程。</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./certbot-auto certonly --email your_mail --agree-tos --no-eff-email --webroot -w /var/nextcloud -d drive.example.com</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="配置-nginx-配置文件">配置 Nginx 配置文件</h2>
+<p>在 /etc/nginx/conf.d/ 下的配置文件里添加如下配置。</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">server {</span><br><span class="line">    listen 80;</span><br><span class="line">    listen [::]:80;</span><br><span class="line">    server_name drive.example.com;</span><br><span class="line">    # enforce https</span><br><span class="line">    return 301 https://$server_name$request_uri;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">server {</span><br><span class="line">    listen 443 ssl http2;</span><br><span class="line">    listen [::]:443 ssl http2;</span><br><span class="line">    server_name drive.example.com;</span><br><span class="line"></span><br><span class="line">    ssl_certificate  /etc/letsencrypt/live/drive.example.com/fullchain.pem;</span><br><span class="line">    ssl_certificate_key  /etc/letsencrypt/live/drive.example.com/privkey.pem;</span><br><span class="line"></span><br><span class="line">    add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";</span><br><span class="line"></span><br><span class="line">    location / {</span><br><span class="line">     proxy_pass http://your_ip:3000;</span><br><span class="line">     proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>最后，重启 nginx，就可以通过网址访问自己的云盘啦！</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart nginx</span><br></pre></td></tr></tbody></table></figure>
+<h1 id="安装中可能遇到的问题-fqa">安装中可能遇到的问题 FQA</h1>
+<ul>
+<li>Q:
+初始化时，提示 “看起来您正在尝试重新安装您的 Nextcloud。但您的 config 文件夹中没有 CAN_INSTALL 文件。请在您的 config 文件夹中创建 CAN_INSTALL 文件以继续。”</li>
+<li>A: 运行如下命令。</li>
+</ul>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /var/nextcloud/data/config &amp;&amp; touch CAN_INSTALL</span><br></pre></td></tr></tbody></table></figure>
+<p>其中，/var/nextcloud/data 为网盘的数据库，请自行修改。</p>
+<hr>
+<ul>
+<li>Q: 反向代理后，网址无法直接访问，比如提示 403。</li>
+<li>A：请先定位问题，可以在 /var/log/nginx/error.log 查看代理错误。</li>
+</ul>
+<hr>
+<ul>
+<li>Q: 关机重启后，原来配置好的网盘无法访问。</li>
+<li>A: 在使用 docker
+run 启动容器时，已经使用 --restart 参数来设置容器开机自启。如果发现服务器重启后，无法访问网盘，可以尝试
+update 命令设置 --restart=always。</li>
+</ul>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker update --restart=always 容器名称</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>Docker 提供了 restart policy 机制，可以在容器退出或者 Docker
+重启时控制容器能够自启动。这种 Restart policy
+可以保证相关容器按照正确顺序启动。</p>
+</blockquote>
+<hr>
+<ul>
+<li>Q: 通过 IP 方式 登录时，没有出现登录界面，显示 "HTTP ERROR
+500".</li>
+<li>A: 根据 <a target="_blank" rel="noopener" href="https://help.nextcloud.com/t/solved-nextcloud-12-http-error-500/21577">Nextcloud
+12 HTTP Error 500</a> 提供的方法，更新 PHP 模块可以解决问题。
+<ul>
+<li>我使用 apt-get upgrade 升级了所有软件的版本，然后问题得到修复。</li>
+</ul></li>
+</ul>
+<blockquote>
+<p>HTTP 500 错误，全称为 HTTP 500 Internal Server Error，即 HTTP 500
+内部服务器错误。<strong>HTTP 500
+内部服务器错误表示服务器遇到意外情况，导致其无法履行请求</strong>，但它无法说明具体错误或发生错误的根本原因。当发生错误时，访问的网站会显示发生错误。</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -2245,330 +2557,6 @@ hexo，所以对 hexo 升级是解决不了这个报错问题。变通的方法�
 <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 如果之前使用`brew install node`安装过 node,需要先执行<span class="string">'解绑'</span>node</span><br><span class="line">brew unlink <span class="title function_">node</span> <span class="params">(不一定需要运行)</span></span><br><span class="line"># 查找可用的node版本 </span><br><span class="line">brew search node</span><br><span class="line"># 安装你需要的版本，建议 node@12</span><br><span class="line">brew install node@12</span><br><span class="line"># 绑定，node@12 需要和你的安装版本一致</span><br><span class="line">brew link node@12</span><br><span class="line"># 上一步如果报错, 按照提示执行命令，比如</span><br><span class="line">brew link --overwrite --force node@12</span><br><span class="line"># 检查安装版本</span><br><span class="line">node -v</span><br></pre></td></tr></tbody></table></figure></li>
 </ul>
 <hr>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://www.waylon.one/paper/hopping-mobility-rover/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nobody">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="One's Way">
-      <meta itemprop="description" content="sharing daily progress and life">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | One's Way">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/paper/hopping-mobility-rover/" class="post-title-link" itemprop="url">解读 Path Planning with Risk Consideration by Hopping Mobility for Long Distance Traversability</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2018-10-20 12:13:39" itemprop="dateCreated datePublished" datetime="2018-10-20T12:13:39+08:00">2018-10-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-19 20:12:32" itemprop="dateModified" datetime="2023-05-19T20:12:32+08:00">2023-05-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/paper/" itemprop="url" rel="index"><span itemprop="name">paper</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="Word count in article">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">Word count in article: </span>
-      <span>2.1k</span>
-    </span>
-    <span class="post-meta-item" title="Reading time">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>8 mins.</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>[toc]</p>
-<p><a target="_blank" rel="noopener" href="https://robotics.estec.esa.int/i-SAIRAS/isairas2018/Papers/Session%204a/4_90kunii-90-113-Kunii-Yasuharu.pdf">文献下载地址</a></p>
-<p>本文运用星球跳跃漫游者 (hopping rover)
-的移动特性 (可以跳过而不是绕过障碍物)，提出了一种新的路径规划和导航方法，并且讨论了因为跳跃行为和测量误差带来的不确定性。</p>
-<blockquote>
-<p>In this paper, a navigation method for a small size hopping rover
-with advantages on its mobility is discussed by considering with some
-uncertainties caused by jumping behavior and measurement error.</p>
-</blockquote>
-<p>和通常的路径规划一样，本文首先从环境数据中提取障碍物，构建三角形
-(triangular polygons) 的环境网格，然后使用 A star
-算法来规划安全的路径。其中，算法着重考虑了和障碍物的碰撞风险，复杂地形
-(roughness of terrain) 和失败的跳跃行为 (failures of hopping
-action)。</p>
-<blockquote>
-<p>By extracting obstacles from environmental data and constructing
-triangular polygons it is possible to form paths. The algorithm
-considers with safety of collision with obstacles, roughness of terrain
-and failures of hopping action, and then could generate safer path based
-on A* algorithm.</p>
-</blockquote>
-<p>多平台维护不易，内容实时更新于 <a href="http://www.waylon.one/paper/hopping-mobility-rover/">个人网站</a>，请移步阅读最新内容。</p>
-<h1 id="introduction">INTRODUCTION</h1>
-<p>目前，月球等星球的表面探索主要是使用一个笨重的履带机器人 (heavy wheel
-rovers)，但是履带机器人开发周期长，发射时极少，对安全的需求要求更多的资源来保障，甚至进入了恶性循环。</p>
-<p>作者提出一种新的方法，使用多个轻量紧凑的探索机器智能体 (light and
-compact exploration robot agent) 来共同工作，构成一个大的智能体。</p>
-<blockquote>
-<p>One possibility is the introduction of a light and compact
-exploration robot agent, and it is possible that multiple types of
-agents work together in one system. Various roles (functions) can be
-played on various kinds of equipment, and all of them can constitute one
-exploration system.</p>
-</blockquote>
-<p>一个创意：通过将同样的功能分散到若干个智能体上，可以忽略一定程度的智能体功能失效，那么风险被分散到整个大系统上，有可能获得较高的效率。</p>
-<blockquote>
-<p>By allocating the same function (equipment) to some or many of them,
-it is possible to ignore some percentage of the agent's loss rate, so
-that risk can be distributed to the system and the mission and there is
-a high possibility of obtaining higher efficiency.</p>
-</blockquote>
-<figure>
-<img data-src="/downloads/images/blog/hopping_mobility_multi_exploration.png" alt="Multi Exploration">
-<figcaption aria-hidden="true">Multi Exploration</figcaption>
-</figure>
-<p>虽然小机器人 (A small size rover) 因为大小 (size) 和重量 (weight)
-有很多优势，但是其移动性 (traversability) 和测量能力 (measurement)
-却受到局限。</p>
-<blockquote>
-<p>However, its size causes problems on its traversability and
-measurement ability.</p>
-</blockquote>
-<p>所以，可以引入跳跃行为 (hopping mobility) 来获得更高的移动性能
-(higher traversability) 和更广的测量范围 (wider measurement range)。</p>
-<blockquote>
-<p>We have introduced hopping mobility to obtain higher traversability
-and wider measurement range.</p>
-</blockquote>
-<p>通过固定区域的地面机器人 (land-based agent)
-和跳跃机器人互相配合，来构成探测系统 (exploration system)。</p>
-<blockquote>
-<p>Introduction of two types of rovers is being considered in the
-exploration system. One is a land-based agent and a stochastic existence
-region is given in the search region, contributing to the search of the
-ground surface. The other is hopping rover. the rover that makes path
-planning taking advantage of sensing from high places while moving the
-exploration area together with the ground moving rover plays an
-important role.</p>
-</blockquote>
-<ul>
-<li>相比轮式机器人，在低重力环境下 (low gravitational
-environment)，可以通过跳跃的方式跳过障碍物，从而抄近路 (adopt a
-short-cut path)。</li>
-</ul>
-<blockquote>
-<p>Especially under low gravitational environment such as other planet
-or satellite, it indicates higher performance, e.g.Thus, it can jump
-over a long distance upon terrains and obstacles, adopt a short-cut path
-without a detour of a wheeled type, and also measure an environment from
-higher position in the air of jumping trajectory.</p>
-</blockquote>
-<figure>
-<img data-src="/downloads/images/blog/Advantage_of_hopping_mobility_Jump.png" alt="Advantage of hopping mobility Jump">
-<figcaption aria-hidden="true">Advantage of hopping mobility
-Jump</figcaption>
-</figure>
-<h1 id="issue-and-objectives">ISSUE AND OBJECTIVES</h1>
-<ul>
-<li>为什么导航问题需要研究：现有的导航研究，没有利用跳跃机器人的运动特性
-(文章发表于 2017)，所以需要进一步利用跳和远距离的优势来导航。</li>
-</ul>
-<blockquote>
-<p>For a hopping rover, though a lot of jumping hardware designs have
-been studied, its software e.g. navigation algorithms have been
-discussed hardly. So, the navigation method hasn't been established by
-taking advantage of <strong>hopping mobility such as jumping over
-obstacles</strong> or <strong>a long distance</strong> yet.</p>
-</blockquote>
-<p>本文利用跳跃机器人的运动特性，基于对移动性和测量数据的风险考虑，提出一种导航方法 (主要是如何规划路径)。</p>
-<blockquote>
-<p>In this paper, a navigation method for a small size hopping rover
-with advantages on its mobility is discussed with some risk
-considerations on its mobility and measured data.</p>
-</blockquote>
-<h1 id="path-planning-for-hopping-mobility">PATH PLANNING FOR HOPPING
-MOBILITY</h1>
-<h2 id="selection-of-jumping-target-position">Selection of Jumping
-Target Position</h2>
-<p>移动机器人跳跃行为 (jumping motion) 的不确定性包括初始速度变化
-(initial speed change)，跳跃距离 (jump distance)，跳跃方向 (jumping
-direction)，落地后的束缚 (bound after landing) 以及跳跃失败 (failure of
-leap)。</p>
-<blockquote>
-<p>The uncertainty factor of hopping rover's jumping motion is the
-initial speed change, jump distance, jumping direction, bound after
-landing, failure of leap.</p>
-</blockquote>
-<p>因为跳跃行为的不确定性，所以需要选取目标落地点 (landing point)。</p>
-<h3 id="如何环境建模">如何环境建模</h3>
-<ol type="1">
-<li>连接被识别到的障碍物，构成不规则三角形的环境模型。</li>
-</ol>
-<blockquote>
-<p>Each obstacle captured by sensing is connected and the observation
-area is divided into triangles</p>
-</blockquote>
-<ol start="2" type="1">
-<li>在观测到的障碍物上使用狄洛尼三角剖分 (Delaunay
-triangulation)，可以获得每三个点的外心 (outside
-heart)，即可能的落地点。</li>
-</ol>
-<blockquote>
-<p>By using Delaunay triangulation on the observed obstacles, we can set
-the landing point.</p>
-</blockquote>
-<!--MC: 什么是Delaunay triangulation？ [完美三角剖分](https://zhuanlan.zhihu.com/p/34158974)-->
-<pre><code>&gt; Delaunay三角剖分定义：平面上的点集P是一种三角剖分，使得P中没有点严格处于剖分后中任意一个三角形**外接圆**的**内部**(可以是圆上)。</code></pre>
-<figure>
-<img data-src="/downloads/images/blog/hopping_mobility_DT.jpg" alt="Delaunay triangulation demo">
-<figcaption aria-hidden="true">Delaunay triangulation demo</figcaption>
-</figure>
-<p>外心安全设定：假设外心是落脚点，那么它到三个端点的距离是一致的，只要有一定的距离保障，就可以确保安全。</p>
-<blockquote>
-<p>Since the outer heart is equally distant from each vertex, it can be
-said that it is safe if a certain margin can be secured.</p>
-</blockquote>
-<blockquote>
-<p>Safety distance is secured by creating a circumscribed circle (其实是
-delaunay triangulation) so as not to include other obstacles in the
-circle</p>
-</blockquote>
-<h2 id="candidate-path-network">Candidate Path Network</h2>
-<ol start="3" type="1">
-<li>通过连接外心，可以得到一个维诺图 (Voronoi diagram)。</li>
-</ol>
-<blockquote>
-<p>The Voronoi diagram is a method of dividing the region by joining the
-outer centers formed by Delaunay triangulation.</p>
-</blockquote>
-<p>MC: 什么是 Voronoi diagram？ <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%B3%B0%E6%A3%AE%E5%A4%9A%E8%BE%B9%E5%BD%A2/3428661?fromtitle=voronoi&amp;fromid=9089406">Voronoi
-diagram</a></p>
-<pre><code>&gt; 泰森多边形是对空间平面的一种剖分，其特点是多边形内的任何位置离该多边形的样点（如居民点）的距离最近，离相邻多边形内样点的距离远，且每个多边形内含且仅包含一个样点。</code></pre>
-<p>维诺图安全设定：维诺图包含障碍物，那么可以生成安全的节点 (safe
-nodes)。</p>
-<blockquote>
-<p>It can be confirmed that there are no obstacles on the sides of the
-Voronoi diagram enclosing the obstacles and safe nodes can be
-generated.</p>
-</blockquote>
-<h2 id="add-uncertainty">Add Uncertainty</h2>
-<p>作者设定跳跃运动有一定的不确定度，误差通常是正态分布 (不清楚是否有理论依据)，取决于初始速度，跳的角度，方向角。</p>
-<blockquote>
-<p>The error is generally given in the form of a normal distribution,
-which rides on the initial speed, the jumping angle, and the direction
-angle, respectively.</p>
-</blockquote>
-<p>基于上述假设，rover 在未来的位置误差会累加
-(accumulated)，可以使用一个误差椭圆 (error ellipse) 来表示。</p>
-<blockquote>
-<p>The position of the rover can be indicated as the existence
-probability, and generally takes a shape called an error ellipse.</p>
-</blockquote>
-<figure>
-<img data-src="http://www.waylon.one/downloads/images/blog/hopping_mobility_error_ellipse.png" alt="Rover Position and Error Ellipse 4">
-<figcaption aria-hidden="true">Rover Position and Error Ellipse
-4</figcaption>
-</figure>
-<p>MC: 通过椭圆来表示误差和不确定性，算是一个新奇的做法。</p>
-<!--
-
-类似的文章有 [Robust Trajectory Planning for a Multirotor against Disturbance based on Hamilton-Jacobi Reachability Analysis](https://ieeexplore.ieee.org/abstract/document/8968126)。
-
--->
-<h1 id="simulation-of-path-planning">SIMULATION OF PATH PLANNING</h1>
-<p>作者在一个很理想的环境下仿真，认为对于非质点的、大块的障碍物仍然可以规划出路径，但是没有讲清楚，如何实现？假设障碍物很高，那么跳跃机器人是否就无法跳跃过去呢？</p>
-<blockquote>
-<p>Even if the obstacle is the size of the black part of the figure.</p>
-</blockquote>
-<p>在虚拟的月球环境下仿真，比简单的理论仿真，更具有说服力。</p>
-<blockquote>
-<p>Simulation was also carried out in the virtual lunar environment
-created based on the rock distribution collected by “Surveyor 7” of
-NASA.</p>
-</blockquote>
-<p>当在椭圆内的障碍物到达一定比例后，进行位置的自校正 (self-position
-estimation)。</p>
-<blockquote>
-<p>When the occupancy rate of the obstacle in the error ellipse exceeds
-the threshold value, the rover performs self-position estimation.</p>
-</blockquote>
-<h1 id="conclusion">CONCLUSION</h1>
-<h2 id="the-results-of-this-research">The results of this research</h2>
-<ul>
-<li>In consideration of the uncertainty of the hopping rover, we were
-able to determine a safe landing point.</li>
-<li>By performing self-position estimation in the virtual lunar
-environment, it was possible to induce Rover while suppressing position
-error.</li>
-</ul>
-<h2 id="works-to-do">Works to do</h2>
-<ul>
-<li>路径规划限于 2 维，缺乏对障碍物和跳跃高度的考虑。</li>
-<li>如何切分大的障碍物，而不仅仅是把障碍物作为质点考虑。</li>
-<li>跳跃机器人的设计，物理构建，环境识别，以及规划好路径后，如何对跳跃行为进行控制，准确抵达目标点。</li>
-</ul>
 
       
     </div>

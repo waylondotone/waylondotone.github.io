@@ -150,7 +150,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">102</span>
+          <span class="site-state-item-count">103</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -183,6 +183,145 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://www.waylon.one/Python/python-interactive-mode/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nobody">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="One's Way">
+      <meta itemprop="description" content="sharing daily progress and life">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | One's Way">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Python/python-interactive-mode/" class="post-title-link" itemprop="url">基于 interactive mode 实现 matplotlib 动态更新图片 (交互式绘图)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-02-08 16:27:36" itemprop="dateCreated datePublished" datetime="2020-02-08T16:27:36+08:00">2020-02-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-05-19 20:12:32" itemprop="dateModified" datetime="2023-05-19T20:12:32+08:00">2023-05-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>816</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>3 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>[toc]</p>
+<p>最近在研究动态障碍物避障算法，在 Python
+语言进行算法仿真时需要实时显示障碍物和运动物的当前位置和轨迹，利用
+Anaconda 的 Python 打包集合，在 Spyder 中使用 Python3.5 语言和
+matplotlib 实现路径的动态显示和交互式绘图 (和 Matlab 功能类似)。</p>
+<p>本博客初稿完成于 2017 年，多平台维护不易，内容更新于 <a target="_blank" rel="noopener" href="https://www.yanlongwang.net/Python/python-interactive-mode/">个人网站</a>，请移步阅读最新内容。</p>
+<h1 id="背景知识">背景知识</h1>
+<h2 id="anaconda">Anaconda</h2>
+<p><a target="_blank" rel="noopener" href="https://www.anaconda.com/">Anaconda</a> 是一个用于科学计算的
+Python 发行版，支持 Linux, Mac, Windows
+系统，提供了包管理与环境管理的功能，可以很方便地解决多版本 python
+并存、切换以及各种第三方包安装问题。</p>
+<p>Anaconda 利用工具 / 命令 conda 来进行 package 和 environment
+的管理，并且已经包含了 Python 和相关的配套工具。</p>
+<h2 id="matplotlib">matplotlib</h2>
+<p><a target="_blank" rel="noopener" href="http://matplotlib.org/">matplotlib</a> 是 python
+最著名的绘图库，它提供了一整套和 matlab 相似的命令
+API，十分适合交互式地进行制图。而且也可以方便地将它作为绘图控件，嵌入
+GUI 应用程序中。其中，matplotlib 的 pyplot 子库提供了和 matlab
+类似的绘图 API，方便用户快速绘制 2D 图表，它的文档相当完备，并且 Gallery
+页面中有上百幅缩略图，打开之后都有源程序。</p>
+<h1 id="matplotlib-交互式绘图">matplotlib 交互式绘图</h1>
+<h2 id="原理">原理</h2>
+<p>在调研 matplotlib 动态绘制曲线方法中，和 matlab 相似有 animation
+方法和交互式绘图，但是 animation
+方法灵活性不高，不太适合路径的实时动态显示，本文最后采用交互式绘图模（interactive
+mode）-- <a target="_blank" rel="noopener" href="http://matplotlib.org/users/shell.html">Using
+matplotlib in a python shell</a>。</p>
+<blockquote>
+<p>The interactive property of the pyplot interface controls whether a
+figure canvas is drawn on every pyplot command. If interactive is False,
+then the figure state is updated on every plot command, but will only be
+drawn on explicit calls to draw(). When interactive is True, then every
+pyplot command triggers a draw.</p>
+</blockquote>
+<h2 id="实践">实践</h2>
+<p>当绘图语句中加入 pl.ion () 时，表示打开了交互模式。此时 python 解释器解释完所有命令后，给你出张图，但不会结束会话，而是等着你跟他交流交流。如果你继续往代码中加入语句，run 之后，你会实时看到图形的改变。当绘图语句中加入 pl.ioff () 时或不添加 pl.ion () 时，表示打关了交互模式。此时要在代码末尾加入 pl.show () 才能显示图片。python 解释器解释完所有命令后，给你出张图，同时结束会话。如果你继续往代码中加入语句，再不会起作用，除非你关闭当前图片，重新 run。</p>
+<h1 id="example">Example</h1>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">Created on Sat Mar 25 23:28:29 2017</span></span><br><span class="line"><span class="string">@author: wyl</span></span><br><span class="line"><span class="string">original link: https://www.yanlongwang.net/Python/python-interactive-mode/</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> matplotlib.patches <span class="keyword">import</span> Circle</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line">    </span><br><span class="line">plt.close()  <span class="comment">#clf() # 清图  cla() # 清坐标轴 close() # 关窗口</span></span><br><span class="line">fig=plt.figure()</span><br><span class="line">ax=fig.add_subplot(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line">ax.axis(<span class="string">"equal"</span>) <span class="comment">#设置图像显示的时候XY轴比例</span></span><br><span class="line">plt.grid(<span class="literal">True</span>) <span class="comment">#添加网格</span></span><br><span class="line">plt.ion()  <span class="comment">#interactive mode on</span></span><br><span class="line">IniObsX=<span class="number">0000</span></span><br><span class="line">IniObsY=<span class="number">4000</span></span><br><span class="line">IniObsAngle=<span class="number">135</span></span><br><span class="line">IniObsSpeed=<span class="number">10</span>*math.sqrt(<span class="number">2</span>)   <span class="comment">#米/秒</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">'开始仿真'</span>)</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">180</span>):</span><br><span class="line">        <span class="comment">#障碍物船只轨迹</span></span><br><span class="line">        obsX=IniObsX+IniObsSpeed*math.sin(IniObsAngle/<span class="number">180</span>*math.pi)*t</span><br><span class="line">        obsY=IniObsY+IniObsSpeed*math.cos(IniObsAngle/<span class="number">180</span>*math.pi)*t</span><br><span class="line">        ax.scatter(obsX,obsY,c=<span class="string">'b'</span>,marker=<span class="string">'.'</span>)  <span class="comment">#散点图</span></span><br><span class="line">        <span class="comment">#ax.lines.pop(1)  删除轨迹</span></span><br><span class="line">        <span class="comment">#下面的图,两船的距离</span></span><br><span class="line">        plt.pause(<span class="number">0.001</span>)</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> err:</span><br><span class="line">    <span class="built_in">print</span>(err)</span><br></pre></td></tr></tbody></table></figure>
+<p><img data-src="https://www.yanlongwang.net/downloads/images/blog/python_interactive_mode_example.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1632,158 +1771,6 @@ successfully. </p><figure class="highlight html"><table><tbody><tr><td class="gu
 <!--
 [在Ubuntu 19.04/18.04、Debian 10/9上安装Zoom的方法](https://ywnz.com/linuxrj/5400.html)
 -->
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://www.waylon.one/Programming/boost-library/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nobody">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="One's Way">
-      <meta itemprop="description" content="sharing daily progress and life">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | One's Way">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Programming/boost-library/" class="post-title-link" itemprop="url">Boost 库</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-01-03 21:33:30" itemprop="dateCreated datePublished" datetime="2020-01-03T21:33:30+08:00">2020-01-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-19 20:12:32" itemprop="dateModified" datetime="2023-05-19T20:12:32+08:00">2023-05-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="Word count in article">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">Word count in article: </span>
-      <span>333</span>
-    </span>
-    <span class="post-meta-item" title="Reading time">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>1 mins.</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>[toc]</p>
-<h1 id="whats-boost">What's boost?</h1>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://www.boost.org/">Boost</a> 是为 C++ 语言标准库提供扩展的一些 C++ 程序库的总称。Boost 库是一个可移植、提供源代码的 C++ 库，作为标准库的后备，是 C++ 标准化进程的开发引擎之一，是为 C++ 语言标准库提供扩展的一些 C++ 程序库的总称。</p>
-</blockquote>
-<blockquote>
-<p>Boost 由于其对跨平台的强调，对标准 C++ 的强调，与编写平台无关。但 Boost 中也有很多是实验性质的东西，在实际的开发中使用<strong>需要谨慎</strong>。</p>
-</blockquote>
-<blockquote>
-<p>The Boost license encourages both commercial and non-commercial
-use.</p>
-</blockquote>
-<h2 id="boost.geometry"><a target="_blank" rel="noopener" href="https://www.boost.org/doc/libs/1_70_0/libs/geometry/doc/html/index.html">Boost.Geometry</a></h2>
-<blockquote>
-<p>Boost.Geometry (aka Generic Geometry Library, GGL), part of
-collection of the Boost C++ Libraries, defines concepts, primitives and
-algorithms for solving geometry problems. / Boost.Geometry
-用于解决几何问题的概念、原语和算法。</p>
-</blockquote>
-<h1 id="functions">Functions</h1>
-<h2 id="geometry">Geometry</h2>
-<h3 id="reference"><a target="_blank" rel="noopener" href="https://www.boost.org/doc/libs/1_70_0/libs/geometry/doc/html/geometry/reference.html">Reference</a></h3>
-<h4 id="buffer"><a target="_blank" rel="noopener" href="https://www.boost.org/doc/libs/1_70_0/libs/geometry/doc/html/geometry/reference/algorithms/buffer/buffer_7_with_strategies.html">buffer</a></h4>
-<blockquote>
-<p>Calculates the buffer (a polygon being the spatial point set
-collection within a specified maximum distance from a geometry) of a
-geometry. /
-通俗点，在原有形状的外围加上指定距离的边界，形成新的几何形状。</p>
-</blockquote>
-<figure>
-<img data-src="https://www.boost.org/doc/libs/1_70_0/libs/geometry/doc/html/img/algorithms/buffer_strategies.png" alt="一图胜千言">
-<figcaption aria-hidden="true">一图胜千言 </figcaption>
-</figure>
-<h4 id="difference"><a target="_blank" rel="noopener" href="https://www.boost.org/doc/libs/1_70_0/libs/geometry/doc/html/geometry/reference/algorithms/difference/difference_3.html">difference</a></h4>
-<blockquote>
-<p>Calculates the spatial set theoretic difference of two geometries. /
-计算两个图形的差异。</p>
-</blockquote>
-<p><img data-src="https://www.boost.org/doc/libs/1_70_0/libs/geometry/doc/html/img/algorithms/difference_b.png"></p>
-<h4 id="simplify"><a target="_blank" rel="noopener" href="https://www.boost.org/doc/libs/1_70_0/libs/geometry/doc/html/geometry/reference/algorithms/simplify/simplify_3.html">simplify</a></h4>
-<blockquote>
-<p>Simplify a geometry. / 简化一个几何图形，比如减少曲线的端点数。</p>
-</blockquote>
-<p><img data-src="https://www.boost.org/doc/libs/1_70_0/libs/geometry/doc/html/svg_simplify_country.png"></p>
-<h1 id="others">Others</h1>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/xiangxianghehe/article/details/79013034">Linux 下查看 Boost 版本</a></li>
-</ul>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dpkg -S /usr/include/boost/version.hpp</span><br><span class="line"></span><br><span class="line">// or</span><br><span class="line"></span><br><span class="line">vim /usr/include/boost/version.hpp  // without dpkg</span><br></pre></td></tr></tbody></table></figure>
-<blockquote>
-<p>复习: Run "dpkg --help" in Linux, 可以查看 "-S|--search <pattern> Find
-package(s) owning file(s)".</pattern></p>
-</blockquote>
 
       
     </div>
