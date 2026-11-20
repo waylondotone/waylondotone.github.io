@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="baidu-site-verification" content="deskxpDjduMieHbS">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.waylon.one","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.16.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="How to install rtags for vim in Ubuntu 18.04 &#x2F; 如何在 Ubuntu 18.04 vim 上安装 rtags 插件 This blog introduces how to install the best cross-reference tool, rtags, that I have ever used in vim, step by step. I">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to install rtags for vim in Ubuntu 18.04">
+<meta property="og:url" content="http://www.waylon.one/Ubuntu/install-rtags-vim-ubuntu-18/index.html">
+<meta property="og:site_name" content="One&#39;s Way">
+<meta property="og:description" content="How to install rtags for vim in Ubuntu 18.04 &#x2F; 如何在 Ubuntu 18.04 vim 上安装 rtags 插件 This blog introduces how to install the best cross-reference tool, rtags, that I have ever used in vim, step by step. I">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-08-09T15:36:25.000Z">
+<meta property="article:modified_time" content="2026-03-18T12:05:01.037Z">
+<meta property="article:author" content="Nobody">
+<meta property="article:tag" content="Programming">
+<meta property="article:tag" content="Weekly Blogs">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://www.waylon.one/Ubuntu/install-rtags-vim-ubuntu-18/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://www.waylon.one/Ubuntu/install-rtags-vim-ubuntu-18/","path":"Ubuntu/install-rtags-vim-ubuntu-18/","title":"How to install rtags for vim in Ubuntu 18.04"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>How to install rtags for vim in Ubuntu 18.04 | One's Way</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">One's Way</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#how-to-install-rtags-for-vim-in-ubuntu-18.04-%E5%A6%82%E4%BD%95%E5%9C%A8ubuntu-18.04-vim%E4%B8%8A%E5%AE%89%E8%A3%85rtags%E6%8F%92%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">How to install rtags for vim in Ubuntu 18.04 &#x2F; 如何在 Ubuntu 18.04 vim 上安装 rtags 插件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#whats-rtags"><span class="nav-number">2.</span> <span class="nav-text">What&#39;s rtags</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#how-to-install-rtags"><span class="nav-number">3.</span> <span class="nav-text">How to install rtags</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Nobody</p>
+  <div class="site-description" itemprop="description">sharing daily progress and life</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">106</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/waylondotone" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;waylondotone" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+        <div class="sidebar-inner sidebar-post-related">
+          <div class="animated">
+              <div class="links-of-blogroll-title"><i class="fa fa-signs-post fa-fw"></i>
+    Related Posts
+  </div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/Ubuntu/how-to-install-zoom-in-linux/" rel="bookmark">
+        <time class="popular-posts-time">2020-01-06</time>
+        <br>
+      Install zoom client in Ubuntu 18.04
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/Ubuntu/install-sogou-ubuntu-18/" rel="bookmark">
+        <time class="popular-posts-time">2019-08-09</time>
+        <br>
+      How to install Sogou Pinyin in non-Chinese versions of Ubuntu 18.04 / 如何在非中文版的 Ubuntu 18.04 安搜狗拼音输入法
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/Linux/vim-configuration/" rel="bookmark">
+        <time class="popular-posts-time">2020-09-29</time>
+        <br>
+      vim 插件配置
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/uncategorized/advanced-ubuntu/" rel="bookmark">
+        <time class="popular-posts-time">2023-05-28</time>
+        <br>
+      ubuntu 进阶学习
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/Linux/tmux/" rel="bookmark">
+        <time class="popular-posts-time">2020-09-29</time>
+        <br>
+      tmux 使用
+      </a>
+    </li>
+  </ul>
+
+          </div>
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://www.waylon.one/Ubuntu/install-rtags-vim-ubuntu-18/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nobody">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="One's Way">
+      <meta itemprop="description" content="sharing daily progress and life">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="How to install rtags for vim in Ubuntu 18.04 | One's Way">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          How to install rtags for vim in Ubuntu 18.04<a href="https://github.com/waylondotone/private_hexo/tree/main/source/_posts/install-rtags-vim-ubuntu-18.md" class="post-edit-link" title="Edit this post" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-08-09 23:36:25" itemprop="dateCreated datePublished" datetime="2019-08-09T23:36:25+08:00">2019-08-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2026-03-18 20:05:01" itemprop="dateModified" datetime="2026-03-18T20:05:01+08:00">2026-03-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Ubuntu/" itemprop="url" rel="index"><span itemprop="name">Ubuntu</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span></span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>NaN:aN</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="how-to-install-rtags-for-vim-in-ubuntu-18.04-如何在ubuntu-18.04-vim上安装rtags插件">How to install rtags for vim in Ubuntu 18.04 / 如何在 Ubuntu 18.04 vim 上安装 rtags 插件</h1>
+<p>This blog introduces how to install the best cross-reference tool, <a target="_blank" rel="noopener" href="https://github.com/Andersbakken/rtags">rtags</a>, that I have ever used in vim, step by step. I hope it helps.</p>
+<h1 id="whats-rtags">What's rtags</h1>
+<p><a target="_blank" rel="noopener" href="https://github.com/Andersbakken/rtags">Rtags</a> is a client/server application that indexes C/C++ code and keeps a persistent file-based database of references, declarations, definitions, symbolnames etc. It allows you to find symbols by name (including nested class and namespace scope). Most importantly, it gives you proper follow-symbol and find-references support.</p>
+<p>Rtags comes with emacs support but there are projects supporting other IDEs: <a target="_blank" rel="noopener" href="https://github.com/lyuts/vim-rtags">vim-rtags</a> and <a target="_blank" rel="noopener" href="https://github.com/rampage644/sublime-rtags">sublime-rtags</a>.</p>
+<p>In this blog, We would install vim-rtags later.</p>
+<h1 id="how-to-install-rtags">How to install rtags</h1>
+<p><strong>First</strong>, you need clang, which is a compiler front end for the C, C++, Objective-C and so on. It uses the LLVM compiler infrastructure as its back end and has been part of the LLVM release cycle since LLVM 2.6. </p><figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// Commands in Ubuntu terminal</span><br><span class="line">// sudo apt install clang-5.0 lld-5.0  </span><br><span class="line">// sudo apt install libclang-5.0-dev  </span><br><span class="line">sudo apt install llvm-7-dev libclang-7-dev</span><br></pre></td></tr></tbody></table></figure><p></p>
+<!--And then add the bin binary to your path.-->
+
+<p><strong>Secondly</strong>, make and install <a target="_blank" rel="noopener" href="https://github.com/Andersbakken/rtags">rtags</a> as follows. </p><figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// Commands in Ubuntu terminal</span><br><span class="line">git clone --recursive https://github.com/Andersbakken/rtags.git</span><br><span class="line">cd rtags &lt;-- in rtags directory</span><br><span class="line">cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 .</span><br><span class="line">make</span><br><span class="line">sudo make install </span><br></pre></td></tr></tbody></table></figure><p></p>
+<p><strong>Thirdly</strong>, you should install vim-rtags in <a target="_blank" rel="noopener" href="https://github.com/VundleVim/Vundle.vim">Vundle.vim</a>. I think it's the easiest way to install rtags plugin in vim. You need to add the following line to .vimrc if you have installed Vundle, and then run :PluginInstall in vim. </p><figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Plugin 'lyuts/vim-rtags' &lt;-- install in vim</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p><strong>Finally</strong>, the last but essential step is that forcing cmake to output compile_commands.json (like <a target="_blank" rel="noopener" href="https://cmake.org/cmake/help/v3.5/variable/CMAKE_EXPORT_COMPILE_COMMANDS.html">DCMAKE_EXPORT_COMPILE_COMMANDS</a>) and link it with rtags according to your project. </p><figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 [***] your_src_path</span><br><span class="line">rc -J your_build_folder_path  &lt;-- use compile_commands.json in your build folder</span><br><span class="line">rdm &amp; &lt;-- launch the rtags server</span><br></pre></td></tr></tbody></table></figure><p></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Programming/" rel="tag"># Programming</a>
+              <a href="/tags/Weekly-Blogs/" rel="tag"># Weekly Blogs</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/website/statistics-visitor-traffic/" rel="prev" title="通过 clustermaps 统计 Hexo 网站的访问地区和 IP">
+                  <i class="fa fa-chevron-left"></i> 通过 clustermaps 统计 Hexo 网站的访问地区和 IP
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Ubuntu/install-sogou-ubuntu-18/" rel="next" title="How to install Sogou Pinyin in non-Chinese versions of Ubuntu 18.04 / 如何在非中文版的 Ubuntu 18.04 安搜狗拼音输入法">
+                  How to install Sogou Pinyin in non-Chinese versions of Ubuntu 18.04 / 如何在非中文版的 Ubuntu 18.04 安搜狗拼音输入法 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nobody</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Word count total">NaNm</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">NaN:aN</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6129496365361356"
+     crossorigin="anonymous"></script>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"waylondotone/blog_comment","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

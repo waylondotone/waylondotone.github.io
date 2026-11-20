@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="baidu-site-verification" content="deskxpDjduMieHbS">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.waylon.one","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.16.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="[toc] shell 和 终端 的概念区别  终端 termimal，作用是提供一个命令的输入输出环境，在 linux 下使用组合键 ctrl+alt+T 打开的就是终端。 shell 是一个命令行解释器，是 linux 内核的一个外壳，负责外界与 linux 内核的交互。shell 接收用户或者其他应用程序的命令，然后将这些命令转化成内核能理解的语言并传给内核，内核执行命令完成后将结果返回给用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux 终端">
+<meta property="og:url" content="http://www.waylon.one/Linux/linux-interminal-shortcut-cmd/index.html">
+<meta property="og:site_name" content="One&#39;s Way">
+<meta property="og:description" content="[toc] shell 和 终端 的概念区别  终端 termimal，作用是提供一个命令的输入输出环境，在 linux 下使用组合键 ctrl+alt+T 打开的就是终端。 shell 是一个命令行解释器，是 linux 内核的一个外壳，负责外界与 linux 内核的交互。shell 接收用户或者其他应用程序的命令，然后将这些命令转化成内核能理解的语言并传给内核，内核执行命令完成后将结果返回给用">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-28T22:03:58.000Z">
+<meta property="article:modified_time" content="2026-03-18T12:05:01.039Z">
+<meta property="article:author" content="Nobody">
+<meta property="article:tag" content="Weekly Blogs">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://www.waylon.one/Linux/linux-interminal-shortcut-cmd/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://www.waylon.one/Linux/linux-interminal-shortcut-cmd/","path":"Linux/linux-interminal-shortcut-cmd/","title":"Linux 终端"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Linux 终端 | One's Way</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">One's Way</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#shell-%E5%92%8C-%E7%BB%88%E7%AB%AF-%E7%9A%84%E6%A6%82%E5%BF%B5%E5%8C%BA%E5%88%AB"><span class="nav-number">1.</span> <span class="nav-text">shell 和 终端 的概念区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">2.</span> <span class="nav-text">终端命令行快捷键</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#history----%E5%8E%86%E5%8F%B2%E5%91%BD%E4%BB%A4"><span class="nav-number">2.1.</span> <span class="nav-text">history -- 历史命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mv-%E7%A7%BB%E5%8A%A8%E6%96%87%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">mv 移动文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">2.2.1.</span> <span class="nav-text">参考资料</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tar-%E6%96%87%E4%BB%B6%E8%A7%A3%E5%8E%8B%E7%BC%A9"><span class="nav-number">2.3.</span> <span class="nav-text">tar 文件解压缩</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99-1"><span class="nav-number">2.3.1.</span> <span class="nav-text">参考资料</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reference"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Nobody</p>
+  <div class="site-description" itemprop="description">sharing daily progress and life</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">106</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/waylondotone" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;waylondotone" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+        <div class="sidebar-inner sidebar-post-related">
+          <div class="animated">
+              <div class="links-of-blogroll-title"><i class="fa fa-signs-post fa-fw"></i>
+    Related Posts
+  </div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/Linux/tmux/" rel="bookmark">
+        <time class="popular-posts-time">2020-09-29</time>
+        <br>
+      tmux 使用
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/Google/chrome-developer-tools/" rel="bookmark">
+        <time class="popular-posts-time">2020-08-26</time>
+        <br>
+      Chrome 开发者工具高级使用技巧
+      </a>
+    </li>
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/Linux/linux-mount-disk/" rel="bookmark">
+        <time class="popular-posts-time">2022-03-18</time>
+        <br>
+      Linux 18.04 挂载硬盘
+      </a>
+    </li>
+  </ul>
+
+          </div>
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://www.waylon.one/Linux/linux-interminal-shortcut-cmd/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nobody">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="One's Way">
+      <meta itemprop="description" content="sharing daily progress and life">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Linux 终端 | One's Way">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Linux 终端<a href="https://github.com/waylondotone/private_hexo/tree/main/source/_posts/linux-interminal-shortcut-cmd.md" class="post-edit-link" title="Edit this post" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-01-29 06:03:58" itemprop="dateCreated datePublished" datetime="2021-01-29T06:03:58+08:00">2021-01-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2026-03-18 20:05:01" itemprop="dateModified" datetime="2026-03-18T20:05:01+08:00">2026-03-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span></span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>NaN:aN</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>[toc]</p>
+<h1 id="shell-和-终端-的概念区别"><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_38214171/article/details/90050340">shell 和 终端 的概念区别</a></h1>
+<ul>
+<li><ruby>终端<rt> termimal</rt></ruby>，作用是<strong>提供一个命令的输入输出环境</strong>，在 linux 下使用组合键 ctrl+alt+T 打开的就是终端。</li>
+<li>shell 是一个<strong>命令行解释器</strong>，是 linux 内核的一个外壳，负责外界与 linux 内核的交互。shell 接收用户或者其他应用程序的命令，然后将这些命令转化成内核能理解的语言并传给内核，内核执行命令完成后将结果返回给用户或者应用程序。</li>
+</ul>
+<p>也就是说，当你打开一个 terminal 时，操作系统会将 terminal 和 shell 关联起来。terminal 从用户这里接收输入（键盘、鼠标等输入设备），扔给 shell，然后把 shell 返回的结果展示给用户（比如通过显示器）；shell 从 terminal 拿到用户输入的命令，解析后交给操作系统内核去执行，并把执行结果返回给 terminal。</p>
+<div class="figure">
+<embed src="../downloads/images/shell_terminal.webp">
+</div>
+<h1 id="终端命令行快捷键">终端命令行快捷键</h1>
+<ul>
+<li><strong>ctrl + a</strong> 回到命令行的行首</li>
+<li><strong> ctrl + e</strong> 回到命令行的行尾</li>
+<li><strong> ctrl + c</strong> 取消当前行输入的命令，并重新到下一行</li>
+<li><strong> ctrl + r</strong> 出现命令历史记录搜索提示，输入字符后会自动匹配命令</li>
+<li><strong> ctrl + b</strong> 向后退一个字符，相当于向<strong>左方向键</strong></li>
+<li><strong> ctrl + f</strong> 向前进一个字符，相当于向<strong>右方向键</strong></li>
+<li><strong> ctrl + p</strong> 向上翻以前的输入命令，相当于向<strong>上方向键</strong></li>
+<li><strong> ctrl + n</strong> 向下翻以前的输入命令，相当于向<strong>下方向键</strong></li>
+<li><strong> alt + b</strong> 向后跳一个字</li>
+<li><strong> alt + f</strong> 向前进一个字</li>
+<li><strong> ctrl + w</strong> 从光标位置向后删除一个字</li>
+<li><strong> ctrl + y</strong> 粘贴最后一个删除的字</li>
+<li><strong> ctrl + d</strong> 删除当前光标位置的一个字符</li>
+<li><strong> ctrl + u</strong> 从光标当前位置删除所有字符至行首</li>
+<li><strong> ctrl + k</strong> 从光标当前位置删除所有字符至行尾，相当于长按 ctrl + d</li>
+</ul>
+<h2 id="history----历史命令">history -- 历史命令</h2>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 在历史中搜索 start的命令</span><br><span class="line">history |grep start</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="mv-移动文件">mv 移动文件</h2>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># The `mv` command doesn't have an `-R` flag, it moves folders recursively</span><br><span class="line">sudo mv fromPath/ toPath/</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="参考资料">参考资料</h3>
+<ul>
+<li><strong><a target="_blank" rel="noopener" href="https://askubuntu.com/questions/210168/moving-folder-and-subfolder-to-another-path">Moving folder and subfolder to another path</a></strong></li>
+</ul>
+<h2 id="tar-文件解压缩">tar 文件解压缩</h2>
+<ul>
+<li>The <code>tar</code> command allows you to create and extract tar archives. The tar command auto-detects compression type and extracts the archive.</li>
+<li>Bzip2 is one of the most popular algorithms for compressing tar files. By convention, the name of a tar archive compressed with <strong>bzip2</strong> ends with either <strong>.tar.bz2</strong> or <strong>.tbz2</strong>.</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xf archive.tar.bz2</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="参考资料-1">参考资料</h3>
+<ul>
+<li>https://linuxize.com/post/how-to-extract-unzip-tar-bz2-file/</li>
+</ul>
+<h1 id="reference">Reference</h1>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lvchaoshun/p/9251834.html">linux 终端命令行的快捷键列表</a></li>
+<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000016129862">命令行界面 (CLI)、终端 (Terminal)、Shell、TTY，傻傻分不清楚？</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Weekly-Blogs/" rel="tag"># Weekly Blogs</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/AV/waymo-safety-report-2020/" rel="prev" title="解读 Waymo Public Road Safety Performance Data">
+                  <i class="fa fa-chevron-left"></i> 解读 Waymo Public Road Safety Performance Data
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Finance/nobody-s-2020-finance-summary/" rel="next" title="小人物的 2020 理财总结">
+                  小人物的 2020 理财总结 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nobody</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Word count total">NaNm</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">NaN:aN</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6129496365361356"
+     crossorigin="anonymous"></script>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"waylondotone/blog_comment","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
